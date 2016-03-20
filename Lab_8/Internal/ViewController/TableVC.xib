@@ -4,9 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableVCViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableVC">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="navigationBar" destination="Dkx-At-JM3" id="YSD-mR-SBE"/>
+                <outlet property="tableView" destination="BQz-sM-FCn" id="Oyc-a2-bul"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="5NE-Ci-uXu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,7 +23,9 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkx-At-JM3" userLabel="navigationBar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <items>
-                        <navigationItem title="Title" id="R10-xE-6TY"/>
+                        <navigationItem title="Title" id="R10-xE-6TY">
+                            <barButtonItem key="backBarButtonItem" title="Cancel" id="VjI-v3-maq"/>
+                        </navigationItem>
                     </items>
                 </navigationBar>
             </subviews>

@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "MainVC.h"
 #import "TableVC.h"
 
 @interface AppDelegate ()
@@ -11,10 +12,8 @@
     CGRect mainFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:mainFrame];
     
-    TableVC *tableVC = [[TableVC alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tableVC];
-    
-    self.window.rootViewController = nc;
+    MainVC *mainVC= [[MainVC alloc] init];
+    self.window.rootViewController = mainVC;
     
     [self.window makeKeyAndVisible];
     
