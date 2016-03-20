@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "TableVC.h"
 
 @interface AppDelegate ()
 @end
@@ -6,6 +7,17 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    CGRect mainFrame = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:mainFrame];
+    
+    TableVC *tableVC = [[TableVC alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tableVC];
+    
+    self.window.rootViewController = nc;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
