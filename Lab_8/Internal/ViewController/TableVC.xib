@@ -19,6 +19,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BQz-sM-FCn" userLabel="tableView">
                     <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="YHk-0L-zq9"/>
+                        <outlet property="delegate" destination="-1" id="dOn-j3-EgC"/>
+                    </connections>
                 </tableView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkx-At-JM3" userLabel="navigationBar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

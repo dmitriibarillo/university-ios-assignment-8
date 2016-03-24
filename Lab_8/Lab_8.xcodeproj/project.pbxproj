@@ -18,6 +18,8 @@
 		28046C691C9EB84200DFE7B2 /* TableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28046C641C9EB84200DFE7B2 /* TableVC.xib */; };
 		28046C6D1C9EBA9000DFE7B2 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28046C6B1C9EBA9000DFE7B2 /* MainVC.m */; };
 		28046C6E1C9EBA9000DFE7B2 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28046C6C1C9EBA9000DFE7B2 /* MainVC.xib */; };
+		28046C711C9ECF5900DFE7B2 /* GitHubAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28046C701C9ECF5900DFE7B2 /* GitHubAPIController.m */; };
+		28C06F861CA325E5000C70F5 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C06F851CA325E5000C70F5 /* Repository.m */; };
 		2D1A18D27C033BF18F8CDD49 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E3AB3B6AEC48B998DCFB9B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,10 @@
 		28046C6A1C9EBA9000DFE7B2 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
 		28046C6B1C9EBA9000DFE7B2 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
 		28046C6C1C9EBA9000DFE7B2 /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		28046C6F1C9ECF5900DFE7B2 /* GitHubAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubAPIController.h; sourceTree = "<group>"; };
+		28046C701C9ECF5900DFE7B2 /* GitHubAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubAPIController.m; sourceTree = "<group>"; };
+		28C06F841CA325E5000C70F5 /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
+		28C06F851CA325E5000C70F5 /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
 		38E3AB3B6AEC48B998DCFB9B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BACCBBBF19D215406AD00E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C0A6A53BB47D4E045FF9FDCF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +118,10 @@
 				28046C5E1C9EB84200DFE7B2 /* CustomCell.h */,
 				28046C5F1C9EB84200DFE7B2 /* CustomCell.m */,
 				28046C601C9EB84200DFE7B2 /* CustomCell.xib */,
+				28046C6F1C9ECF5900DFE7B2 /* GitHubAPIController.h */,
+				28046C701C9ECF5900DFE7B2 /* GitHubAPIController.m */,
+				28C06F841CA325E5000C70F5 /* Repository.h */,
+				28C06F851CA325E5000C70F5 /* Repository.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28046C681C9EB84200DFE7B2 /* TableVC.m in Sources */,
+				28046C711C9ECF5900DFE7B2 /* GitHubAPIController.m in Sources */,
+				28C06F861CA325E5000C70F5 /* Repository.m in Sources */,
 				28046C5A1C9EB71300DFE7B2 /* main.m in Sources */,
 				28046C6D1C9EBA9000DFE7B2 /* MainVC.m in Sources */,
 				28046C661C9EB84200DFE7B2 /* CustomCell.m in Sources */,

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,25 +13,42 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MjF-LN-OYE" id="Lzc-hh-z7A" userLabel="ContentView">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5i-QZ-SAx" userLabel="titleLabel">
-                        <rect key="frame" x="22" y="8" width="272" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commits: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9k-AE-PWa" userLabel="commitLabel">
+                        <rect key="frame" x="10" y="28" width="150" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="NR0-Sr-hfn"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Commits: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9k-AE-PWa" userLabel="commitLabel">
-                        <rect key="frame" x="22" y="37" width="130" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3H-ad-Tbi" userLabel="authorLabel">
+                        <rect key="frame" x="162" y="28" width="148" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3H-ad-Tbi" userLabel="authorLabel">
-                        <rect key="frame" x="171" y="37" width="52" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5i-QZ-SAx" userLabel="titleLabel">
+                        <rect key="frame" x="10" y="10" width="300" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="B3H-ad-Tbi" firstAttribute="leading" secondItem="S9k-AE-PWa" secondAttribute="trailing" constant="2" id="6NP-Xs-yuE"/>
+                    <constraint firstItem="B3H-ad-Tbi" firstAttribute="leading" secondItem="S9k-AE-PWa" secondAttribute="trailing" constant="2" id="DC0-fc-hAn"/>
+                    <constraint firstItem="J5i-QZ-SAx" firstAttribute="top" secondItem="Lzc-hh-z7A" secondAttribute="topMargin" constant="2" id="MOu-mH-06Y"/>
+                    <constraint firstItem="J5i-QZ-SAx" firstAttribute="leading" secondItem="Lzc-hh-z7A" secondAttribute="leadingMargin" constant="2" id="SMV-Ou-h7c"/>
+                    <constraint firstItem="S9k-AE-PWa" firstAttribute="top" secondItem="J5i-QZ-SAx" secondAttribute="bottom" constant="2" id="Yhc-af-N5M"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="S9k-AE-PWa" secondAttribute="bottom" constant="2" id="dPm-uJ-xAL"/>
+                    <constraint firstItem="B3H-ad-Tbi" firstAttribute="top" secondItem="J5i-QZ-SAx" secondAttribute="bottom" constant="2" id="euV-cN-y4p"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="B3H-ad-Tbi" secondAttribute="bottom" constant="2" id="gXh-p4-AJ9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="B3H-ad-Tbi" secondAttribute="trailing" constant="2" id="hY4-zl-6OT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="J5i-QZ-SAx" secondAttribute="trailing" constant="2" id="n8C-ah-eYJ"/>
+                    <constraint firstItem="B3H-ad-Tbi" firstAttribute="top" secondItem="J5i-QZ-SAx" secondAttribute="bottom" constant="2" id="qTP-rX-BGH"/>
+                    <constraint firstItem="S9k-AE-PWa" firstAttribute="leading" secondItem="Lzc-hh-z7A" secondAttribute="leadingMargin" constant="2" id="zmh-uK-Qk5"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="authorLabel" destination="B3H-ad-Tbi" id="xRG-rW-QxG"/>
