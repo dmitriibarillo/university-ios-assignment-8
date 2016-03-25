@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableVC">
             <connections>
-                <outlet property="navigationBar" destination="Dkx-At-JM3" id="YSD-mR-SBE"/>
                 <outlet property="tableView" destination="BQz-sM-FCn" id="Oyc-a2-bul"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="5NE-Ci-uXu"/>
             </connections>
@@ -17,31 +16,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BQz-sM-FCn" userLabel="tableView">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="YHk-0L-zq9"/>
                         <outlet property="delegate" destination="-1" id="dOn-j3-EgC"/>
                     </connections>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkx-At-JM3" userLabel="navigationBar">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <items>
-                        <navigationItem title="Title" id="R10-xE-6TY">
-                            <barButtonItem key="backBarButtonItem" title="Cancel" id="VjI-v3-maq"/>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="BQz-sM-FCn" secondAttribute="trailing" id="IMk-qx-equ"/>
                 <constraint firstItem="BQz-sM-FCn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U5m-68-xNL"/>
-                <constraint firstItem="Dkx-At-JM3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WqM-9X-lFQ"/>
-                <constraint firstItem="BQz-sM-FCn" firstAttribute="top" secondItem="Dkx-At-JM3" secondAttribute="bottom" id="YH7-UP-0fP"/>
-                <constraint firstItem="Dkx-At-JM3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bnu-6V-U0B"/>
+                <constraint firstItem="BQz-sM-FCn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VwN-sq-tYm"/>
                 <constraint firstAttribute="bottom" secondItem="BQz-sM-FCn" secondAttribute="bottom" id="cnD-G1-YmA"/>
-                <constraint firstAttribute="trailing" secondItem="Dkx-At-JM3" secondAttribute="trailing" id="x86-QJ-9ka"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

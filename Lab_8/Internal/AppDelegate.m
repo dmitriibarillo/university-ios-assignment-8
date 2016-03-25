@@ -13,7 +13,8 @@
     self.window = [[UIWindow alloc] initWithFrame:mainFrame];
     
     MainVC *mainVC= [[MainVC alloc] init];
-    self.window.rootViewController = mainVC;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    self.window.rootViewController = nc;
     
     [self.window makeKeyAndVisible];
     

@@ -3,12 +3,9 @@
 #import "Repository.h"
 
 static NSString *const reuseId = @"reuseId";
-static NSString *const kNameKey = @"nameKey";
-static NSString *const kCapitalKey = @"capitalKey";
 
 @interface TableVC () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UINavigationBar *navigationBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
 
@@ -19,26 +16,20 @@ static NSString *const kCapitalKey = @"capitalKey";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initializeComponents];
-    
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([CustomCell class]) bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:reuseId];
     self.tableView.estimatedRowHeight = 100;
     
+    self.navigationController.navigationBar.hidden = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
+- (instancetype)initWithData:(NSArray *)data{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _data = [NSArray arrayWithArray:data];
+    }
     
-    self.navigationBar.topItem.title = @"SomeTitle";
-}
-
-- (void)initializeComponents
-{
-    NSString *backBarButtonName = @"Back";
-    UIBarButtonItem *backBarItem = [[UIBarButtonItem alloc]initWithTitle:backBarButtonName style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
-    self.navigationBar.topItem.leftBarButtonItem = backBarItem;
+    return self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -53,25 +44,15 @@ static NSString *const kCapitalKey = @"capitalKey";
     Repository *userInfo = self.data[indexPath.row];
     
     cell.titleLabel.text = userInfo.name;
-    cell.authorLabel.text = userInfo.lastCommitter;
-    cell.commitLabel.text = [NSString stringWithFormat:@"Total commits: %lu", userInfo.commitsCount];
+    cell.authorLabel.text = userInfo.created_at;
+    cell.commitLabel.text = userInfo.updated_at;
     
     return cell;
 }
 
-- (void)backButtonTapped
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (instancetype)initWithData:(NSArray *)data
-{
-    self = [super self];
-    if (self) {
-        _data = [NSArray arrayWithArray:data];
-    }
-    
-    return self;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

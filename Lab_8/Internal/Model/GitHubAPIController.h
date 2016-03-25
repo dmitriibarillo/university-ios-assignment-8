@@ -4,8 +4,8 @@
 
 + (instancetype)sharedController;
 
-- (void)getInfoForUser:(NSString *)userName
-       success:(void (^)(NSArray *))success
-       failure:(void (^)(NSError *))failure;
+- (void)getReposInfoForUser:(NSString *)user
+        success:(void (^)(NSArray *))success
+        failure:(void (^)(NSError *))failure;
 
 @end

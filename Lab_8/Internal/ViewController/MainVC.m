@@ -19,34 +19,40 @@
     self.controller = [GitHubAPIController sharedController];
 }
 
-- (IBAction)searchButtonTaped {
-    [self showGrayView];
-    [self loadRepositoryData];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
-- (void)loadRepositoryData
+- (IBAction)searchButtonTaped {
+    [self showGrayView];
+    [self loadData];
+}
+
+- (void)loadData
 {
     NSString *user = self.textField.text;
     typeof(self) __weak wself = self;
     
-    __block NSArray *repositories;
-    
     [self.controller
-     getInfoForUser:user
+     getReposInfoForUser:user
      success:^(NSArray *objects) {
-         repositories = [wself generateRepositoriesFromDictionaries:objects];
          
-         TableVC *tableVC = [[TableVC alloc] initWithData:repositories];
-         [wself presentViewController:tableVC animated:YES completion:nil];
-         
+         TableVC *tableVC = [[TableVC alloc] initWithData:objects];
+         [wself.navigationController pushViewController:tableVC animated:YES];
          [wself.grayView removeFromSuperview];
      }
      failure:^(NSError *error) {
-         if (error.code == -1009) {
+         if (error.code ==  kCFURLErrorTimedOut) {
+             NSString *message = [NSString stringWithFormat:@"The Internet connection timed out."];
+             [self showAlertWithErrorCode:error.code andMessage:message];
+         }
+         if (error.code ==  kCFURLErrorNotConnectedToInternet) {
              NSString *message = [NSString stringWithFormat:@"The Internet connection appears to be offline."];
              [self showAlertWithErrorCode:error.code andMessage:message];
          }
-         else if (error.code == -1011) {
+         else if (error.code == kCFURLErrorBadServerResponse) {
              NSString *message = [NSString stringWithFormat:@"User with name \'%@\' doesn't exist.",user];
              [self showAlertWithErrorCode:error.code andMessage:message];
          }
@@ -57,28 +63,15 @@
      }];
 }
 
-- (NSArray *)generateRepositoriesFromDictionaries:(NSArray *)dictionaries
-{
-    NSMutableArray *repositories = [NSMutableArray array];
-    for (NSDictionary *dict in dictionaries) {
-        Repository *repository = [[Repository alloc] init];
-        repository.name = dict[kRepositoryName];
-        repository.commitsCount = 0;
-        [repositories addObject:repository];
-    }
-    
-    return repositories;
-}
-
-
 - (void)showAlertWithErrorCode:(NSInteger)code andMessage:(NSString *)message
 {
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:[NSString stringWithFormat:@"Error %ld",(long)code]
-                          message:[NSString stringWithString:message]
-                          delegate:nil
-                          cancelButtonTitle:@"Close"
-                          otherButtonTitles:nil];
+        initWithTitle:[NSString stringWithFormat:@"Error %ld",(long)code]
+        message:[NSString stringWithString:message]
+        delegate:nil
+        cancelButtonTitle:@"Close"
+        otherButtonTitles:nil];
+    
     [alert show];
 }
 
@@ -98,8 +91,20 @@
 {
     [self searchButtonTaped];
     [textField resignFirstResponder];
+ 
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@".,/\\!@#$%^&*()_+= "];
+    
+    if ([resultString rangeOfCharacterFromSet:characterSet].length != 0) {
+        return NO;
+    }
+    
+    return YES;
+}
 
 @end

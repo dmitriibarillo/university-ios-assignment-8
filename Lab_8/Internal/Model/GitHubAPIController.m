@@ -1,9 +1,6 @@
 #import "GitHubAPIController.h"
 #import <AFNetworking.h>
-
-// https://api.github.com/users/noveogroup/repos
-
-// https://api.github.com/repos/dmitriibarillo/JSONParser/commits
+#import "Repository.h"
 
 static NSString *const kBaseAPIURL = @"https://api.github.com";
 
@@ -38,18 +35,31 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
     return sharedController;
 }
 
-- (void)getInfoForUser:(NSString *)userName
-               success:(void (^)(NSArray *))success
-               failure:(void (^)(NSError *))failure
+- (void)getReposInfoForUser:(NSString *)user
+        success:(void (^)(NSArray *))success
+        failure:(void (^)(NSError *))failure
 {
-    NSString *request = [NSString stringWithFormat:@"users/%@/repos", userName];
+    NSString *request = [NSString stringWithFormat:@"users/%@/repos", user];
     
     [self.sessionManager
         GET:request
         parameters:nil
         success:^(NSURLSessionDataTask *task, id responseObject) {
             if (success) {
-                success(responseObject);
+                
+                NSMutableArray *result = [[NSMutableArray alloc] init];
+                NSArray *keys = @[kRepositoryName, kRepositoryCreatedAt, kRepositoryUpdatedAt];
+                for (NSDictionary *dict in responseObject) {
+                    Repository *repository = [[Repository alloc] init];
+                    
+                    for (NSString *key in keys) {
+                        [repository setValue:dict[key] forKey:key];
+                    }
+                    
+                    [result addObject:repository];
+                }
+                
+                success(result);
             }
         }
         failure:^(NSURLSessionDataTask *task, NSError *error) {
