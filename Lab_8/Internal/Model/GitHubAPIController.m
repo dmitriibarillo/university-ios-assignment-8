@@ -10,7 +10,6 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
 
 @end
 
-
 @implementation GitHubAPIController
 
 - (instancetype)init
@@ -40,9 +39,10 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         failure:(void (^)(NSError *))failure
 {
     NSString *request = [NSString stringWithFormat:@"users/%@/repos", user];
+    NSString *encodeRequest = [request stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     
     [self.sessionManager
-        GET:request
+        GET:encodeRequest
         parameters:nil
         success:^(NSURLSessionDataTask *task, id responseObject) {
             if (success) {

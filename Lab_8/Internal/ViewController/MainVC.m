@@ -2,12 +2,12 @@
 #import "TableVC.h"
 #import "Repository.h"
 #import "GitHubAPIController.h"
+#import <AFNetworking.h>
 
 @interface MainVC () <UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *textField;
-@property (nonatomic, weak) IBOutlet UIButton *searchButton;
-@property (nonatomic) IBOutlet UIView *grayView;
+@property (nonatomic) UIView *grayView;
 @property (nonatomic) GitHubAPIController *controller;
 
 @end
@@ -44,22 +44,27 @@
          [wself.grayView removeFromSuperview];
      }
      failure:^(NSError *error) {
-         if (error.code ==  kCFURLErrorTimedOut) {
+         NSHTTPURLResponse* httpResponseErrorKey = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+         NSInteger htmlStatusCode = httpResponseErrorKey.statusCode;
+         
+         if (error.code ==  NSURLErrorTimedOut) {
              NSString *message = [NSString stringWithFormat:@"The Internet connection timed out."];
-             [self showAlertWithErrorCode:error.code andMessage:message];
+             [wself showAlertWithErrorCode:error.code andMessage:message];
          }
-         if (error.code ==  kCFURLErrorNotConnectedToInternet) {
+         else if (error.code ==  NSURLErrorNotConnectedToInternet) {
              NSString *message = [NSString stringWithFormat:@"The Internet connection appears to be offline."];
-             [self showAlertWithErrorCode:error.code andMessage:message];
+             [wself showAlertWithErrorCode:error.code andMessage:message];
          }
-         else if (error.code == kCFURLErrorBadServerResponse) {
-             NSString *message = [NSString stringWithFormat:@"User with name \'%@\' doesn't exist.",user];
-             [self showAlertWithErrorCode:error.code andMessage:message];
+         else if (htmlStatusCode == 404) {
+             NSString *message = [NSString stringWithFormat:@"User with name \'%@\' doesn't exist.", user];
+             [wself showAlertWithErrorCode:error.code andMessage:message];
          }
          else {
-             NSLog(@"Error: %@", error);
+             NSString *message = [NSString stringWithFormat:@"Error \'%@\' doesn't exist.", error.description];
+             [wself showAlertWithErrorCode:error.code andMessage:message];
+             NSLog(@"Error: %@", error.description);
          }
-         [self.grayView removeFromSuperview];
+         [wself.grayView removeFromSuperview];
      }];
 }
 
