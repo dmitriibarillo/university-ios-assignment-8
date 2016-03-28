@@ -44,8 +44,8 @@ static NSString *const reuseId = @"reuseId";
     Repository *userInfo = self.data[indexPath.row];
     
     cell.titleLabel.text = userInfo.name;
-    cell.authorLabel.text = userInfo.created_at;
-    cell.commitLabel.text = userInfo.updated_at;
+    cell.authorLabel.text = userInfo.createdDate;
+    cell.commitLabel.text = userInfo.updatedDate;
     
     return cell;
 }

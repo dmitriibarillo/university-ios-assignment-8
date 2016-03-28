@@ -7,7 +7,7 @@ static NSString *const kRepositoryUpdatedAt = @"updated_at";
 @interface Repository : NSObject
 
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *created_at;
-@property (nonatomic) NSString *updated_at;
+@property (nonatomic) NSString *createdDate;
+@property (nonatomic) NSString *updatedDate;
 
 @end

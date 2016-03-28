@@ -38,23 +38,21 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         success:(void (^)(NSArray *))success
         failure:(void (^)(NSError *))failure
 {
-    NSString *request = [NSString stringWithFormat:@"users/%@/repos", user];
-    NSString *encodeRequest = [request stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
+    NSString *encodeUser = [user stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];;
+    NSString *request = [NSString stringWithFormat:@"users/%@/repos", encodeUser];
     
     [self.sessionManager
-        GET:encodeRequest
+        GET:request
         parameters:nil
         success:^(NSURLSessionDataTask *task, id responseObject) {
             if (success) {
                 
                 NSMutableArray *result = [[NSMutableArray alloc] init];
-                NSArray *keys = @[kRepositoryName, kRepositoryCreatedAt, kRepositoryUpdatedAt];
                 for (NSDictionary *dict in responseObject) {
                     Repository *repository = [[Repository alloc] init];
-                    
-                    for (NSString *key in keys) {
-                        [repository setValue:dict[key] forKey:key];
-                    }
+                    repository.name = dict[kRepositoryName];
+                    repository.createdDate = dict[kRepositoryCreatedAt];
+                    repository.updatedDate = dict[kRepositoryUpdatedAt];
                     
                     [result addObject:repository];
                 }

@@ -19,6 +19,7 @@
 		28046C6D1C9EBA9000DFE7B2 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 28046C6B1C9EBA9000DFE7B2 /* MainVC.m */; };
 		28046C6E1C9EBA9000DFE7B2 /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28046C6C1C9EBA9000DFE7B2 /* MainVC.xib */; };
 		28046C711C9ECF5900DFE7B2 /* GitHubAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28046C701C9ECF5900DFE7B2 /* GitHubAPIController.m */; };
+		282FF89E1CA9A4F300E9D2D9 /* NSString+LoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FF89D1CA9A4F300E9D2D9 /* NSString+LoginHelper.m */; };
 		28C06F861CA325E5000C70F5 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C06F851CA325E5000C70F5 /* Repository.m */; };
 		2D1A18D27C033BF18F8CDD49 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E3AB3B6AEC48B998DCFB9B /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,8 @@
 		28046C6C1C9EBA9000DFE7B2 /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
 		28046C6F1C9ECF5900DFE7B2 /* GitHubAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubAPIController.h; sourceTree = "<group>"; };
 		28046C701C9ECF5900DFE7B2 /* GitHubAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubAPIController.m; sourceTree = "<group>"; };
+		282FF89C1CA9A4F300E9D2D9 /* NSString+LoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+LoginHelper.h"; path = "Common/NSString+LoginHelper.h"; sourceTree = SOURCE_ROOT; };
+		282FF89D1CA9A4F300E9D2D9 /* NSString+LoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+LoginHelper.m"; path = "Common/NSString+LoginHelper.m"; sourceTree = SOURCE_ROOT; };
 		28C06F841CA325E5000C70F5 /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
 		28C06F851CA325E5000C70F5 /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
 		38E3AB3B6AEC48B998DCFB9B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +76,7 @@
 		28046C161C9EB5F100DFE7B2 = {
 			isa = PBXGroup;
 			children = (
+				282FF89B1CA9A46B00E9D2D9 /* Common */,
 				28046C531C9EB71300DFE7B2 /* Internal */,
 				28046C481C9EB70E00DFE7B2 /* Resourses */,
 				28046C201C9EB5F100DFE7B2 /* Products */,
@@ -137,6 +141,16 @@
 				28046C6C1C9EBA9000DFE7B2 /* MainVC.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		282FF89B1CA9A46B00E9D2D9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				282FF89C1CA9A4F300E9D2D9 /* NSString+LoginHelper.h */,
+				282FF89D1CA9A4F300E9D2D9 /* NSString+LoginHelper.m */,
+			);
+			name = Common;
+			path = Commom;
 			sourceTree = "<group>";
 		};
 		3D3116BCCFF59C8FAAD69EEE /* Pods */ = {
@@ -277,6 +291,7 @@
 				28C06F861CA325E5000C70F5 /* Repository.m in Sources */,
 				28046C5A1C9EB71300DFE7B2 /* main.m in Sources */,
 				28046C6D1C9EBA9000DFE7B2 /* MainVC.m in Sources */,
+				282FF89E1CA9A4F300E9D2D9 /* NSString+LoginHelper.m in Sources */,
 				28046C661C9EB84200DFE7B2 /* CustomCell.m in Sources */,
 				28046C651C9EB84200DFE7B2 /* AppDelegate.m in Sources */,
 			);

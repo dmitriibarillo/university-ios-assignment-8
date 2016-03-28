@@ -2,6 +2,7 @@
 #import "TableVC.h"
 #import "Repository.h"
 #import "GitHubAPIController.h"
+#import "NSString+LoginHelper.h"
 #import <AFNetworking.h>
 
 @interface MainVC () <UITextFieldDelegate>
@@ -47,7 +48,7 @@
          NSHTTPURLResponse* httpResponseErrorKey = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
          NSInteger htmlStatusCode = httpResponseErrorKey.statusCode;
          
-         if (error.code ==  NSURLErrorTimedOut) {
+         if (error.code ==  NSURLErrorTimedOut && [error.domain isEqualToString:NSURLErrorDomain]) {
              NSString *message = [NSString stringWithFormat:@"The Internet connection timed out."];
              [wself showAlertWithErrorCode:error.code andMessage:message];
          }
@@ -60,7 +61,7 @@
              [wself showAlertWithErrorCode:error.code andMessage:message];
          }
          else {
-             NSString *message = [NSString stringWithFormat:@"Error \'%@\' doesn't exist.", error.description];
+             NSString *message = [NSString stringWithFormat:@"Error %@.", error.localizedDescription];
              [wself showAlertWithErrorCode:error.code andMessage:message];
              NSLog(@"Error: %@", error.description);
          }
@@ -103,13 +104,12 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *resultString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@".,/\\!@#$%^&*()_+= "];
-    
-    if ([resultString rangeOfCharacterFromSet:characterSet].length != 0) {
-        return NO;
+    if ([resultString isEqual:@""]) {
+        return YES;
     }
-    
-    return YES;
+    else {
+        return [NSString isValidLogin:resultString];
+    }
 }
 
 @end
