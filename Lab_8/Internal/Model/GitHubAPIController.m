@@ -46,7 +46,6 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         parameters:nil
         success:^(NSURLSessionDataTask *task, id responseObject) {
             if (success) {
-                
                 NSMutableArray *result = [[NSMutableArray alloc] init];
                 for (NSDictionary *dict in responseObject) {
                     Repository *repository = [[Repository alloc] init];
@@ -56,7 +55,6 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
                     
                     [result addObject:repository];
                 }
-                
                 success(result);
             }
         }

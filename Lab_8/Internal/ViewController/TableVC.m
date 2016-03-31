@@ -19,7 +19,11 @@ static NSString *const reuseId = @"reuseId";
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([CustomCell class]) bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:reuseId];
     self.tableView.estimatedRowHeight = 100;
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -40,7 +44,6 @@ static NSString *const reuseId = @"reuseId";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
-    
     Repository *userInfo = self.data[indexPath.row];
     
     cell.titleLabel.text = userInfo.name;

@@ -39,7 +39,6 @@
     [self.controller
      getReposInfoForUser:user
      success:^(NSArray *objects) {
-         
          TableVC *tableVC = [[TableVC alloc] initWithData:objects];
          [wself.navigationController pushViewController:tableVC animated:YES];
          [wself.grayView removeFromSuperview];
@@ -52,7 +51,7 @@
              NSString *message = [NSString stringWithFormat:@"The Internet connection timed out."];
              [wself showAlertWithErrorCode:error.code andMessage:message];
          }
-         else if (error.code ==  NSURLErrorNotConnectedToInternet) {
+         else if (error.code == NSURLErrorNotConnectedToInternet && [error.domain isEqualToString:NSURLErrorDomain]) {
              NSString *message = [NSString stringWithFormat:@"The Internet connection appears to be offline."];
              [wself showAlertWithErrorCode:error.code andMessage:message];
          }
